@@ -5,19 +5,21 @@ require 'pathname'
 module Floss
   # Core Management FLOSS Projects
   class Main
-    attr_reader :services, :folders, :utils, :command
+    attr_reader :folders, :utils, :command
 
-    def initialize(folders, utils, command)
-      @folders = folders
-      @utils = utils
+    def initialize(services, command)
+      @folders = services.resolve :folders
+      @utils = services.resolve :utils
       @command = command
     end
 
+    # a
     def parsed_projects
-      folder = folders.cejo_config.join 'floss'
+      folder = folders.floss_config
       utils.parse_folder folder
     end
 
+    # a
     def process_projects
       parsed_projects.each do |language, projects|
         puts "\n❯ #{language.capitalize}"
