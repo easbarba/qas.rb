@@ -1,0 +1,70 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/floss'
+
+require 'gli'
+require 'dry-container'
+
+# and then, there was fire.
+class App
+  extend GLI::App
+
+  program_desc 'Manage FLOSS Projects repositories.'
+
+  version Floss::VERSION
+
+  # subcommand_option_handling :normal
+  arguments :normal
+
+  # desc 'Describe some switch here'
+  # switch %i[s switch]
+
+  # desc 'Describe some flag here'
+  # default_value 'the default'
+  # arg_name 'The name of the argument'
+  # flag %i[f flagname]
+
+  def self.services
+    container = Dry::Container.new
+    container.register :folders, Floss::Services::Folders.new
+    container.register :utils, Floss::Services::Utils.new
+  end
+
+  desc "Archive Floss projects"
+  command :archive do |c|
+    c.action do
+      Floss::Main.new(services, :archive).run
+    end
+  end
+
+  desc "Grab floss projects"
+  command :grab do |c|
+    c.action do
+      Floss::Main.new(services, :grab).run
+    end
+  end
+
+  # pre do |global, command, options, args|
+  #   # Pre logic here
+  #   # Return true to proceed; false to abort and not call the
+  #   # chosen command
+  #   # Use skips_pre before a command to skip this block
+  #   # on that command only
+  #   true
+  # end
+
+  # post do |global, command, options, args|
+  #   # Post logic here
+  #   # Use skips_post before a command to skip this
+  #   # block on that command only
+  # end
+
+  # on_error do |exception|
+  #   # Error logic here
+  #   # return false to skip default error handling
+  #   true
+  # end
+end
+
+exit App.run(ARGV)
