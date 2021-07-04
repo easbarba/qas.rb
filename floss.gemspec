@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["easbarbosa"]
   spec.email         = ["easbarbosa@tutanota.me"]
 
-  spec.summary       = 'Install local builds of FLOSS Projects.'
+  spec.summary       = 'Manage FLOSS Projects repositories.'
   # spec.description   = "TODO: Write a longer description or delete this line."
   spec.homepage      = 'https://git.sr.ht/~easbarbosa/floss'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.7')
