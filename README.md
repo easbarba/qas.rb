@@ -8,12 +8,13 @@ Manage FLOSS repositories in `$HOME/Projects`.
 
 ## Installation
 
-Install dependencies with:
+All dependencies are pulled with:
 
-    $ gem install bundler
     $ bundle install
 
-and install in your system with:    
+PS: `$ gem install bundler`
+
+To install Floss in your system make use of: 
 
     $ rake install
 
