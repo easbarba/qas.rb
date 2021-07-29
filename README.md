@@ -10,6 +10,7 @@ Manage FLOSS repositories in `$HOME/Projects`.
 
 Install dependencies with:
 
+    $ gem install bundler
     $ bundle install
 
 and install in your system with:    
