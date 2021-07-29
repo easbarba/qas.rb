@@ -20,21 +20,15 @@ and install in your system with:
 
     $ floss grab
 
+
     $ floss archive zip --archive awesome,lua
 
 ## Configuration
 
 Floss will look for cvs files containing repositories to be managed at XDG_CONFIG/floss
 
-eg: 
-
-``` shell
-ls $XDG_CONFIG/floss
-
-lua.csv 
-
-```
-
+$XDG_CONFIG/floss/lua.csv 
+ 
 ```csv
 name,repository
 
