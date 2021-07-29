@@ -19,8 +19,11 @@ and install in your system with:
 
 ## Usage
 
-    $ floss grab
+grab: 
 
+    `$ floss grab`
+
+archive: 
 
     $ floss archive zip --archive awesome,lua
 
