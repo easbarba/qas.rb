@@ -3,9 +3,7 @@
 Manage FLOSS repositories in `$HOME/Projects`.
 
 ## archive
-    `archive` option will compression desired projects at `$HOME/Downloads/archived` 
-
-    cli usage: archive zip --archive awesome,lua
+`archive` option will compression desired projects at `$HOME/Downloads/archived` 
 
 
 ## Installation
@@ -20,7 +18,9 @@ and install in your system with:
 
 ## Usage
 
-    Consult cli for more information
+    $ floss grab
+
+    $ floss archive zip --archive awesome,lua
 
 ## Configuration
 
