@@ -10,11 +10,6 @@ module Floss
       @command = command
     end
 
-    def actions
-      { grab: ->(project) { Grab.new(utils, project) }.curry,
-        archive: ->(project) { archive.new(utils, project) }.curry }
-    end
-
     # get all projects
     def parsed_projects
       ParseProjects.new.parse_folder
@@ -28,6 +23,11 @@ module Floss
           yield project
         end
       end
+    end
+
+    def actions
+      { grab: ->(project) { Grab.new(utils, project) }.curry,
+        archive: ->(project) { archive.new(utils, project) }.curry }
     end
 
     def run
