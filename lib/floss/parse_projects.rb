@@ -10,24 +10,24 @@ module Floss
     PROJECTS_LOCATION = Pathname.new(File.join(Dir.home, '.config', 'floss'))
     PROJECTS_FILES = PROJECTS_LOCATION.children
 
-    def parse_file(file)
-      x = {}
+    def to_project(file, lang)
+      [].tap do |x|
+        CSV.read(file, headers: true).by_row.each do |project|
+          name = project['name']
+          url = URI project['repository']
 
-      CSV.read(file, headers: true).by_row.each do |name|
-        n = name['name'].to_sym
-        x[n] = URI(name['repository'])
+          x << ProjectInfo.new(name, url, lang.to_s)
+        end
       end
-
-      x
     end
 
-    # Parse Folder with serialization files
+    # Parse files available
     def parse_folder
       projects = {}
 
       PROJECTS_FILES.each do |file|
-        name = file.basename.sub_ext('').to_s.to_sym
-        projects[name] = parse_file file
+        lang = file.basename.sub_ext('').to_s.to_sym
+        projects[lang] = to_project file, lang
       end
 
       projects
