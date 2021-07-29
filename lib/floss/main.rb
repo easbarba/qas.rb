@@ -10,49 +10,32 @@ module Floss
       @command = command
     end
 
+    def actions
+      { grab: ->(project) { Grab.new(utils, project) }.curry,
+        archive: ->(project) { archive.new(utils, project) }.curry }
+    end
+
     # get all projects
     def parsed_projects
       ParseProjects.new.parse_folder
     end
 
-    # organize project information
-    def process_projects
+    def manage_projects
       parsed_projects.each do |language, projects|
-        puts "\n❯ #{language.capitalize}"
-        puts
+        puts "\n❯ #{language.capitalize}\n"
 
         projects.each do |project|
-          name = project[0].to_s
-          url = project[1]
-          project_info = ProjectInfo.new name, url, language.to_s
-
-          yield project_info
+          yield project
         end
       end
     end
 
-    # TODO: isso aqui embaixo ta uma porra
-
-    def archive
-      process_projects do |info|
-        Archive.new(utils, info).run
-      end
-    end
-
-    public :archive
-
-    def grab
-      process_projects do |info|
-        Grab.new(utils, info).run
-      end
-    end
-
-    public :grab
-
     def run
-      public_send(command)
-    end
+      return unless actions.keys.include? command
 
-    public :run
+      manage_projects do |project|
+        actions[command].call(project).run
+      end
+    end
   end
 end
