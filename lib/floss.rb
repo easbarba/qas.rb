@@ -13,7 +13,6 @@ require_relative 'floss/actions/grab'
 
 # * Services
 require_relative 'floss/services/utils'
-require_relative 'floss/services/folders'
 
 # Manage FLOSS Projects repositories.
 module Floss
