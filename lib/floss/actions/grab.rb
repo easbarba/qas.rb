@@ -29,7 +29,7 @@ module Floss
     def run
       puts project.to_s
 
-      if folder.exist?
+      if project.folder.exist?
         do_pull
       else
         do_clone

@@ -6,7 +6,7 @@ module Floss
   # Archive FLOSS Projects
   class Archive
     # FLOSS Projects elected to be archived
-    ARCHIVE_THESE = %w[lar distro cejo ixi gota].freeze
+    ARCHIVE_THESE = %w[lar distro cejo ixe gota].freeze # TODO: as cli argument instead
 
     # Format to be compressed
     FMT = 'tar'
@@ -14,14 +14,12 @@ module Floss
     # Folder which compressed files will be stored
     ARCHIVED_FOLDER = Pathname.new(File.join(Dir.home, 'Downloads', 'archived'))
 
-    attr_reader :utils, :archived_filename, :name, :folder, :info
+    attr_reader :utils, :archived_filename, :project
 
-    def initialize(utils, name, folder, info)
+    def initialize(utils, project)
       @utils = utils
-      @name = name
-      @folder = folder
-      @info = info
-      @archived_filename = "#{ARCHIVED_FOLDER.join(name)}.#{FMT}"
+      @project = project
+      @archived_filename = "#{ARCHIVED_FOLDER.join(project.name)}.#{FMT}"
     end
 
     # Archiving FLOSS project
@@ -29,18 +27,19 @@ module Floss
       require 'git'
 
       utils.spin('Archiving') do
-        repo = Git.open folder
+        repo = Git.open project.folder
         repo.archive repo.current_branch, archived_filename, format: FMT # TODO: fiber/multithread
       end
-      puts
+
+      puts # a bit more of space
     end
 
     def run
-      return unless ARCHIVE_THESE.include? name
+      return unless ARCHIVE_THESE.include? project.name
 
       Dir.mkdir ARCHIVED_FOLDER unless ARCHIVED_FOLDER.exist?
 
-      print info
+      print project.to_s
       do_archive
     end
   end
