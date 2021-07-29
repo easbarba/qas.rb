@@ -27,18 +27,17 @@ class App
 
   def self.services
     container = Dry::Container.new
-    container.register :folders, Floss::Services::Folders.new
     container.register :utils, Floss::Services::Utils.new
   end
 
-  desc "Archive Floss projects"
+  desc 'Archive Floss projects'
   command :archive do |c|
     c.action do
       Floss::Main.new(services, :archive).run
     end
   end
 
-  desc "Grab floss projects"
+  desc 'Grab floss projects'
   command :grab do |c|
     c.action do
       Floss::Main.new(services, :grab).run
