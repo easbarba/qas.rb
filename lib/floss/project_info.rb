@@ -17,6 +17,7 @@ module Floss
 
     def to_s
       <<~INFO
+        name: #{name}
         repository: #{url}
         folder: #{folder}
       INFO
