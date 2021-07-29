@@ -1,35 +1,49 @@
 # Floss
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/floss`. To experiment with that code, run `bin/console` for an interactive prompt.
+Manage FLOSS repositories in `$HOME/Projects`.
 
-TODO: Delete this and the text above, and describe your gem
+## archive
+    `archive` option will compression desired projects at `$HOME/Downloads/archived` 
+
+    cli usage: archive zip --archive awesome,lua
+
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'floss'
-```
-
-And then execute:
+Install dependencies with:
 
     $ bundle install
 
-Or install it yourself as:
+and install in your system with:    
 
-    $ gem install floss
+    $ rake install
 
 ## Usage
 
-TODO: Write usage instructions here
+    Consult cli for more information
 
-## Development
+## Configuration
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Floss will look for cvs files containing repositories to be managed at XDG_CONFIG/floss
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+eg: 
 
-## Contributing
+``` shell
+ls $XDG_CONFIG/floss
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/floss.
+lua.csv 
+
+```
+
+```csv
+name,repository
+
+awesome,https://github.com/awesomeWM/awesome
+luarocks,https://github.com/luarocks/luarocks
+lua,https://github.com/lua/lua
+
+```
+
+
+## License
+[GPL version 3](https://www.gnu.org/licenses/gpl-3.0.en.html)
