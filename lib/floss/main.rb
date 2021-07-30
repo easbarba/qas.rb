@@ -31,15 +31,16 @@ module Floss
 
     def actions
       { grab: ->(project) { Grab.new(utils, project) }.curry,
-        archive: ->(project) { archive.new(utils, project) }.curry }
+        archive: ->(project) { Archive.new(utils, project) }.curry }
     end
 
     def run
       return unless actions.keys.include? command
+
       git_error
 
       manage_projects do |project|
-        n actions[command].call(project).run
+        actions[command].call(project).run
       end
     end
   end
