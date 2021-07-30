@@ -20,9 +20,13 @@ module Floss
         puts "\n❯ #{language.capitalize}\n"
 
         projects.each do |project|
-          yield project
+          yield project if block_given?
         end
       end
+    end
+
+    def git_error
+      raise 'Git not found' unless utils.commandv?('git').any?
     end
 
     def actions
@@ -32,9 +36,10 @@ module Floss
 
     def run
       return unless actions.keys.include? command
+      git_error
 
       manage_projects do |project|
-        actions[command].call(project).run
+        n actions[command].call(project).run
       end
     end
   end
