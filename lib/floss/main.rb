@@ -3,6 +3,8 @@
 module Floss
   # Core Management FLOSS Projects
   class Main
+    class GitMustBeAvailable < StandardError; end
+
     attr_reader :folders, :utils, :command
 
     def initialize(services, command)
@@ -25,10 +27,6 @@ module Floss
       end
     end
 
-    def git_error
-      raise 'Git not found' unless utils.commandv?('git').any?
-    end
-
     def actions
       { grab: ->(project) { Grab.new(utils, project) }.curry,
         archive: ->(project) { Archive.new(utils, project) }.curry }
@@ -37,7 +35,7 @@ module Floss
     def run
       return unless actions.keys.include? command
 
-      git_error
+      raise GitMustBeAvailable.new 'Git not Found' unless utils.commandv?('it').any?
 
       manage_projects do |project|
         actions[command].call(project).run
