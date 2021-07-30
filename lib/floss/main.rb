@@ -35,7 +35,7 @@ module Floss
     def run
       return unless actions.keys.include? command
 
-      raise GitMustBeAvailable.new 'Git not Found' unless utils.commandv?('it').any?
+      raise GitMustBeAvailable.new 'Git not Found' unless utils.commandv?('git').any?
 
       manage_projects do |project|
         actions[command].call(project).run
