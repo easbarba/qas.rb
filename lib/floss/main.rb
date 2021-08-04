@@ -21,7 +21,6 @@ module Floss
         puts "\n❯ #{language.capitalize}\n"
 
         repos.each do |project|
-          p project
           yield project if block_given?
         end
       end
