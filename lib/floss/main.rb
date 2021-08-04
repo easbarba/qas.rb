@@ -12,16 +12,16 @@ module Floss
       @command = command
     end
 
-    # get all projects
-    def parsed_projects
-      ParseProjects.new.parse_folder
+    def projects
+      @projects ||= Projects.new.parse_folder
     end
 
-    def manage_projects
-      parsed_projects.each do |language, projects|
+    def current_project
+      projects.each do |language, repos|
         puts "\n❯ #{language.capitalize}\n"
 
-        projects.each do |project|
+        repos.each do |project|
+          p project
           yield project if block_given?
         end
       end
@@ -35,9 +35,9 @@ module Floss
     def run
       return unless actions.keys.include? command
 
-      raise GitMustBeAvailable.new 'Git not Found' unless utils.commandv?('git').any?
+      raise GitMustBeAvailable, 'Git not Found' unless utils.commandv?('git').any?
 
-      manage_projects do |project|
+      current_project do |project|
         actions[command].call(project).run
       end
     end
