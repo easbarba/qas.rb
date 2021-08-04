@@ -5,6 +5,7 @@ require 'csv'
 require 'pathname'
 
 # TODO: Delay parsing file till just finally needed
+# TODO: Check if file match expect structure
 
 module Floss
   # Gather all Projects available
