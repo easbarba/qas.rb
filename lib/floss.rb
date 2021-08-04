@@ -5,7 +5,7 @@ require_relative 'floss/version'
 # * Main
 require_relative 'floss/main'
 require_relative 'floss/project_info'
-require_relative 'floss/parse_projects'
+require_relative 'floss/projects'
 
 # * Actions
 require_relative 'floss/actions/archive'

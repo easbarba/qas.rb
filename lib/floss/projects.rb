@@ -4,13 +4,15 @@ require 'uri'
 require 'csv'
 require 'pathname'
 
+# TODO: Delay parsing file till just finally needed
+
 module Floss
-  # Parse all files and compile them as a single object
-  class ParseProjects
+  # Gather all Projects available
+  class Projects
     PROJECTS_LOCATION = Pathname.new(File.join(Dir.home, '.config', 'floss'))
     PROJECTS_FILES = PROJECTS_LOCATION.children
 
-    def to_project(file, lang)
+    def all_projects(file, lang)
       [].tap do |x|
         CSV.read(file, headers: true).by_row.each do |project|
           name = project['name']
@@ -21,13 +23,22 @@ module Floss
       end
     end
 
+    def files_found
+      puts 'Files found:'
+      PROJECTS_FILES.each do |file|
+        puts file
+      end
+    end
+
     # Parse files available
     def parse_folder
+      files_found
+
       projects = {}
 
       PROJECTS_FILES.each do |file|
         lang = file.basename.sub_ext('').to_s.to_sym
-        projects[lang] = to_project file, lang
+        projects[lang] = all_projects file, lang
       end
 
       projects
