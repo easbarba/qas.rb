@@ -16,7 +16,7 @@ PS: `$ gem install bundler`
 
 To install Floss in your system make use of: 
 
-    $ rake install
+    $ make install
 
 ## Usage
 
