@@ -43,6 +43,9 @@ lua,https://github.com/lua/lua
 
 ```
 
+## History
+`floss` began as a module of a super package called `cejo` and extracted as standalone to follow the UNIX main rule: 'do one thing, well'.
+
 
 ## License
 [GPL version 3](https://www.gnu.org/licenses/gpl-3.0.en.html)
