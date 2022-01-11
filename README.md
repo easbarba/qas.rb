@@ -18,9 +18,9 @@ archive:
 
 ## Configuration
 
-Floss will look for cvs files containing repositories to be managed at XDG_CONFIG/floss
+Floss will look for configuration files containing repositories to be managed at XDG_CONFIG/floss:
 
-$XDG_CONFIG/floss/lua.csv 
+-> $XDG_CONFIG/floss/lua.csv 
  
 ```csv
 name,repository
