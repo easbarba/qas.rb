@@ -8,8 +8,8 @@ lint: fmt
 	reek lib/*
 
 install:
-    gem build floss.gemspec
-    gem install ./floss-*.gem
+	gem build floss.gemspec
+	gem install ./floss-*.gem
 
 clean:
 	rm -rf "$PWD/.gems"
@@ -19,6 +19,7 @@ clean:
 deps:
 	gem install bundler --no-document
 	bundle check || bin/setup
+.PHONY:deps
 
 audit:
 	bundle exec bundle audit check --update # refresh the database, analyze our Gemfile.lock after any vulnerable versions.
