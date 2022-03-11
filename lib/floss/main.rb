@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Floss
   # Core Management FLOSS Projects
   class Main
@@ -8,7 +6,7 @@ module Floss
     attr_reader :folders, :utils, :command
 
     def initialize(services, command)
-      @utils = services.resolve :utils
+      @utils = services
       @command = command
     end
 

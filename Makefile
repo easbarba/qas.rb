@@ -1,34 +1,19 @@
-.DEFAULT_GOAL := build
+.DEFAULT_GOAL := install
 
 fmt:
-	rufo lib/*
+    bundle exec rufo lib/*
 .PHONY:fmt
 
-lint: fmt
-	reek lib/*
+lint:
+    bundle exec reek lib/*
 
-install:
-	gem build floss.gemspec
-	gem install ./floss-*.gem
-
-clean:
-	rm -rf "$PWD/.gems"
-	rm -rf "$PWD/.cache"
-.PHONY:clean
+test:
+    bundle exec rspec spec
+.PHONY:test
 
 deps:
-	gem install bundler --no-document
-	bundle check || bin/setup
-.PHONY:deps
+    gem install bundler --no-document
+    bundle check || bin/setup
 
-audit:
-	bundle exec bundle audit check --update # refresh the database, analyze our Gemfile.lock after any vulnerable versions.
-
-c-build:
-	docker-compose build
-
-c-run:
-	docker-compose run --rm --service-ports ruby_dev
-
-c-down:
-	docker-compose stop
+install: deps
+    bundle exec rake install

@@ -1,43 +1,27 @@
-# frozen_string_literal: true
-
 Gem::Specification.new do |spec|
   spec.name = 'floss'
-  spec.version = "0.1.0"
+  spec.version = '0.2.0'
   spec.authors = ['easbarba']
-  spec.email = ['easbarba@pm.me']
+  spec.email = ['easbarba@outlook.com']
 
-  spec.summary = 'Manage FLOSS Projects repositories.'
-  spec.homepage = 'https://git.sr.ht/~easbarba/floss'
-  spec.required_ruby_version = Gem::Requirement.new('>= 2.7')
+  spec.summary = 'manage floss projects easily.'
+  spec.homepage = 'https://github.com/easbarba/floss'
+  spec.required_ruby_version = Gem::Requirement.new('>= 3.0')
 
   spec.metadata['homepage_uri'] = spec.homepage
 
-  spec.files = Dir.chdir(File.expand_path(__dir__)) do
-    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{\A(?:test|spec|features)/}) }
-  end
+  spec.files = Dir.glob('{lib,exe}/**/*', File::FNM_DOTMATCH).reject { |f| File.directory?(f) }
   spec.bindir = 'exe'
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
   # runtime
-  spec.add_runtime_dependency 'dry-auto_inject', '~> 0.7.0'
-  spec.add_runtime_dependency 'dry-container', '~> 0.7.2'
   spec.add_runtime_dependency 'git', '~> 1.8', '>= 1.8.1'
   spec.add_runtime_dependency 'gli', '~> 2.20'
   spec.add_runtime_dependency 'tty-spinner', '~> 0.9.3'
   spec.add_runtime_dependency 'yaml', '~> 0.1.1'
 
   # development
-  spec.add_development_dependency 'bundler', '~> 2.2', '>= 2.2.17'
-  spec.add_development_dependency 'minitest', '~> 5.14', '>= 5.14.4'
-  spec.add_development_dependency 'pry', '~> 0.14.1'
   spec.add_development_dependency 'rake', '~> 13.0', '>= 13.0.3'
-  spec.add_development_dependency 'rdoc', '~> 6.3', '>= 6.3.1'
-  spec.add_development_dependency 'reek', '~> 6.0', '>= 6.0.4'
   spec.add_development_dependency 'rspec', '~> 3.10'
-  spec.add_development_dependency 'rubocop', '~> 1.15'
-  spec.add_development_dependency 'rubocop-rspec', '~> 2.3'
-  spec.add_development_dependency 'rufo', '~> 0.12.0'
-  spec.add_development_dependency 'yard', '~> 0.9.26'
-  spec.add_development_dependency 'solargraph', '~> 0.40.4'
 end

@@ -41,10 +41,14 @@ Get all needed dependencies and install `distro` with make:
 
 PS: you may need to set PATH to find local packages.
 
+## TODO
+
+- check if error is 'unable to acess' repository and go on to the next one. 
+
 
 ## History
 `floss` began as a module of a super package called `cejo` and extracted as standalone to follow the UNIX main rule: 'do one thing, well'.
 
 
 ## License
-[GPL version 3](https://www.gnu.org/licenses/gpl-3.0.en.html)
+Apache version 2.0
