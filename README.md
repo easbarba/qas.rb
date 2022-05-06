@@ -1,53 +1,53 @@
 # Floss
 
-Manage FLOSS repositories in `$HOME/Projects`.
+Easily manage FLOSS repositories.
 
-## archive
-`archive` option will compression desired projects at `$HOME/Downloads/archived` 
+<pre>
+ Floss v2 is currently a on-going porting and thus so not yet finished.
 
+ Its former v1 is finished and completed and can be found on the 'v1' branch.
+</pre>
 
 ## Usage
 
-grab: 
+Grab all projects locally: 
 
-    `$ floss grab`
+    `$ floss --grab`
 
-archive: 
+Archive selected projects at `$HOME/Downloads/archived`: 
 
-    $ floss archive zip --archive awesome,lua
+    $ floss --archive --name awesomewm nuxt
 
 ## Configuration
 
-Floss will look for configuration files containing repositories to be managed at XDG_CONFIG/floss:
+`floss` looks for configuration files at `$XDG_CONFIG/floss`:
 
--> $XDG_CONFIG/floss/lua.csv 
+-> $XDG_CONFIG/floss/misc.csv
  
 ```csv
-name,repository
-
-awesome,https://github.com/awesomeWM/awesome
-luarocks,https://github.com/luarocks/luarocks
-lua,https://github.com/lua/lua
-
+name,branch,url
+awesomewm,master,https://github.com/awesomeWM/awesome
+nuxt,main,https://github.com/nuxt/framework
+swift_format,main,https://github.com/apple/swift-format
 ```
 
 ## Installation
 
-Get all needed dependencies and install `distro` with make:
+Get all dependencies and install with:
 
-    $ make deps && make install
+    $ make install
 
--- User install only!
-
-PS: you may need to set PATH to find local packages.
+## Container
 
 ## TODO
 
-- check if error is 'unable to acess' repository and go on to the next one. 
-
+- check if error 'unable to access' repository and go on to the next one. 
+- more management utilities
+- provide binary
 
 ## History
-`floss` began as a module of a super package called `cejo` and extracted as standalone to follow the UNIX main rule: 'do one thing, well'.
+The `floss` project initially was a module of a bigger package called `cejo` and
+later on extracted as standalone to follow the UNIX main rule: 'do one thing, well'.
 
 
 ## License
