@@ -1,14 +1,14 @@
-FROM ruby:3.1.1-alpine3.15
+FROM ruby:3.1.2-alpine3.15
 
-ENV BUNDLER_VERSION=2.3.9
+ENV BUNDLER_VERSION=2.3.12
 
-WORKDIR /usr/src/app/
+WORKDIR /app
 
-COPY Gemfile*  floss.gemspec .
+COPY Gemfile* floss.gemspec .
 
-RUN gem install bundler -v $BUNDLER_VERSION  && bundle install
+RUN bundle check || bundle install
 
-COPY docs/examples/ /root/.config/floss
+COPY examples/ ~/.config/floss
 COPY . .
 
 CMD ["exe/floss"]
