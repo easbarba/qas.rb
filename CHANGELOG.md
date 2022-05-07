@@ -1,4 +1,8 @@
-## [0.9.0] - 2022-03-11
+## [1.2.0] - 2022-05-07
+
+- implements --archive
+
+## [0.9.0] - 2022-05-07
 
 - simpler CLI interface
 - refactoring on sensible configuration files

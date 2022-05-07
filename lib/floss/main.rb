@@ -7,8 +7,9 @@ module Floss
 
     attr_reader :folders, :utils, :command, :projects, :verbose
 
-    def initialize(command, verbose = nil)
+    def initialize(command, names = nil, verbose = nil)
       @command = command
+      @names = names
       @verbose = verbose
     end
 
@@ -34,7 +35,7 @@ module Floss
     def actions
       {
         grab: ->(project) { Grab.new(project) }.curry,
-        archive: ->(project) { Archive.new(project) }.curry
+        archive: ->(project) { Archive.new(project, @names) }.curry
       }
     end
 

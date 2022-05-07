@@ -5,41 +5,50 @@ require 'pathname'
 module Floss
   # Archive FLOSS Projects
   class Archive
-    # FLOSS Projects elected to be archived
-    ARCHIVE_THESE = %w[lar distro cejo ixe gota].freeze # TODO: as cli argument instead
-
     # Format to be compressed
-    FMT = 'tar'
+    attr_reader :format
 
-    # Folder which compressed files will be stored
-    ARCHIVED_FOLDER = Pathname.new(File.join(Dir.home, 'Downloads', 'archived'))
+    # FLOSS Projects elected to be archived
+    attr_reader :projects
 
-    attr_reader :archived_filename, :project
+    attr_reader :project
 
-    def initialize(project)
+    # Folder to store compressed projects
+    FOLDER = Pathname.new(File.join(Dir.home, 'Downloads', 'archived'))
+
+    def initialize(project, projects, fmt = 'tar')
       @project = project
-      @archived_filename = "#{ARCHIVED_FOLDER.join(project.name)}.#{FMT}"
+      @projects = projects
+      @format = fmt
+      @fullpath = "#{FOLDER.join(project.name)}.#{@format}"
     end
 
     # Archiving FLOSS project
-    def do_archive
+    def archive
       require 'git'
 
       Utils.spin('Archiving') do
         repo = Git.open project.folder
-        repo.archive repo.current_branch, archived_filename, format: FMT # TODO: fiber/multithread
+        repo.archive repo.current_branch, @fullpath, format: @format # TODO: fiber/multithread
       end
 
       puts # a bit more of space
     end
 
+    def mkfolder
+      Dir.mkdir FOLDER unless FOLDER.exist?
+    end
+
+    def info
+      puts "#{project.name} > #{@fullpath}"
+    end
+
     def run
-      return unless ARCHIVE_THESE.include? project.name
+      return unless projects.include? project.name
 
-      Dir.mkdir ARCHIVED_FOLDER unless ARCHIVED_FOLDER.exist?
-
-      print project.to_s
-      do_archive
+      info
+      mkfolder
+      archive
     end
   end
 end

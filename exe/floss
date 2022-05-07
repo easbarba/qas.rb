@@ -2,37 +2,49 @@
 # frozen_string_literal: true
 
 require_relative '../lib/floss'
-require 'optparse'
 
 module Cli
-  attr_accessor :action, :verbose
+  attr_accessor :action, :verbose, :args
 
-  OptionParser.new do |parser|
-    parser.banner = 'Easily manage floss repositories.'
+  def self.options
+    require 'optparse'
 
-    parser.on('-v', '--verbose', 'More information') do
-      @verbose = true
+    OptionParser.new do |parser|
+      parser.banner = 'Easily manage floss repositories.'
+
+      parser.on('-v', '--verbose', 'More information') do
+        @verbose = true
+      end
+
+      parser.on('-i', '--info', 'Floss current version') do
+        @action = :version
+      end
+
+      parser.on('-g', '--grab', 'Grab floss projects') do
+        @action = :grab
+      end
+
+      parser.on('-a', '--archive NAMES', 'Archive floss projects on list of NAMES') do |names|
+        @names = names
+        @action = :archive
+      end
     end
-
-    parser.on('-i', '--info', 'Floss current version') do
-      @action = :version
-    end
-
-    parser.on('-g', '--grab', 'Grab floss projects') do
-      @action = :grab
-    end
-
-    parser.on('-a', '--archive', 'Archive Floss projects') do
-      @action = :archive
-    end
-
-    parser.on('-a', '--archive', 'Archive Floss projects') do
-      @action = :archive
-    end
-  end.parse!
+  end
 
   def self.start
-    Floss::Main.new(@action, @verbose).run
+    options.parse! ['--help'] if ARGV.empty?
+
+    begin
+      options.parse!
+    rescue OptionParser::MissingArgument
+      puts <<~ERROR
+        --archive NAMES
+
+        Missing NAMES of projects!'
+      ERROR
+    end
+
+    Floss::Main.new(@action, @names, @verbose).run
   end
 end
 

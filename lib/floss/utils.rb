@@ -12,6 +12,7 @@ module Floss
       spinner.auto_spin
 
       yield
+
       spinner.success
     end
 
