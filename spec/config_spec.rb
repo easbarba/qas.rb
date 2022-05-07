@@ -19,7 +19,7 @@ module Floss
 
     context '#projects' do
       it "random project's URI attribute is a properly formatted" do
-        project = config.projects.values.sample.first
+        project = config.items.values.sample.first
         expect(project.url.class).to be URI::HTTPS
       end
     end
