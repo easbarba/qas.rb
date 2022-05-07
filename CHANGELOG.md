@@ -1,3 +1,9 @@
+## [0.9.0] - 2022-03-11
+
+- simpler CLI interface
+- refactoring on sensible configuration files
+
+
 ## [0.2.0] - 2022-03-11
 
 - Major clean up: less dependencies and use 3.0 features. 
