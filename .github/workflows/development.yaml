@@ -23,5 +23,9 @@ jobs:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
+    - name: prepare config
+      run: |
+        mkdir -p ~/.config && cp -r examples ~/.config/floss
+
     - name: Run tests
       run: bundle exec rspec
