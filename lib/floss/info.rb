@@ -3,23 +3,22 @@
 require 'pathname'
 
 module Floss
-  # Provides Project Information
+  # Project Information
   class Info
+    ROOT = Pathname.new(File.join(Dir.home, 'Projects'))
+
     attr_reader :url, :name, :folder
 
     def initialize(name, url, language)
       @name = name
       @url = url
 
-      root = Pathname.new(File.join(Dir.home, 'Projects'))
-      @folder = root.join language, name
+      @folder = ROOT.join language, name
     end
 
     def to_s
       <<~INFO
-        name: #{name}
-        repository: #{url}
-        folder: #{folder}
+        #{name}
       INFO
     end
   end

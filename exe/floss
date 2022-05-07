@@ -4,18 +4,36 @@
 require_relative '../lib/floss'
 require 'optparse'
 
-OptionParser.new do |parser|
-  parser.banner = 'Easily manage floss repositories.'
+module Cli
+  attr_accessor :action, :verbose
 
-  parser.on('-v', '--version', 'Floss current version') do
-    print Floss::VERSION
-  end
+  OptionParser.new do |parser|
+    parser.banner = 'Easily manage floss repositories.'
 
-  parser.on('-g', '--grab', 'Grab floss projects') do
-    Floss::Main.new(:grab).run
-  end
+    parser.on('-v', '--verbose', 'More information') do
+      @verbose = true
+    end
 
-  parser.on('-a', '--archive', 'Archive Floss projects') do
-    Floss::Main.new(:archive).run
+    parser.on('-i', '--info', 'Floss current version') do
+      @action = :version
+    end
+
+    parser.on('-g', '--grab', 'Grab floss projects') do
+      @action = :grab
+    end
+
+    parser.on('-a', '--archive', 'Archive Floss projects') do
+      @action = :archive
+    end
+
+    parser.on('-a', '--archive', 'Archive Floss projects') do
+      @action = :archive
+    end
+  end.parse!
+
+  def self.start
+    Floss::Main.new(@action, @verbose).run
   end
-end.parse!
+end
+
+Cli.start

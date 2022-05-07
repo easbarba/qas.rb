@@ -11,14 +11,14 @@ module Floss
       @project = project
     end
 
-    def do_pull
+    def pull
       Utils.spin('Pulling') do
         repo = Git.open project.folder
         repo.pull 'origin', repo.current_branch
       end
     end
 
-    def do_clone
+    def clone
       Utils.spin('Cloning') do
         Git.clone project.url, project.folder
       end
@@ -28,11 +28,8 @@ module Floss
     def run
       puts project.to_s
 
-      if project.folder.exist?
-        do_pull
-      else
-        do_clone
-      end
+      project.folder.exist? ? pull : clone
+
       puts
     end
   end
