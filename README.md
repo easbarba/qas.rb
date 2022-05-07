@@ -5,7 +5,7 @@ Easily manage FLOSS repositories.
 <pre>
  Floss v2 is currently a on-going porting and thus so not yet finished.
 
- Its former v1 is finished and completed and can be found on the 'v1' branch.
+ Although there is a version 1 fully functional found at the 'v1' branch.
 </pre>
 
 ## Usage
