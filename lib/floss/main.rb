@@ -7,8 +7,7 @@ module Floss
 
     attr_reader :folders, :utils, :command
 
-    def initialize(services, command)
-      @utils = services
+    def initialize(command)
       @command = command
     end
 
@@ -28,15 +27,15 @@ module Floss
 
     def actions
       {
-        grab: ->(project) { Grab.new(utils, project) }.curry,
-        archive: ->(project) { Archive.new(utils, project) }.curry
+        grab: ->(project) { Grab.new(project) }.curry,
+        archive: ->(project) { Archive.new(project) }.curry
       }
     end
 
     def run
       return unless actions.keys.include? command
 
-      raise GitMustBeAvailable, 'Git not Found' unless utils.commandv?('git').any?
+      raise GitMustBeAvailable, 'Git was not found!' unless Utils.which?('git').any?
 
       current_project do |project|
         actions[command].call(project).run

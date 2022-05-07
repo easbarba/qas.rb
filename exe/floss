@@ -2,28 +2,20 @@
 # frozen_string_literal: true
 
 require_relative '../lib/floss'
+require 'optparse'
 
-# and then, there was fire.
-class Cli
-  BASE = Floss::Utils.new
+OptionParser.new do |parser|
+  parser.banner = 'Easily manage floss repositories.'
 
-  program_desc 'Manage FLOSS Projects repositories.'
-  version Floss::VERSION
-  arguments :normal
-
-  desc 'Archive Floss projects'
-  command :archive do |c|
-    c.action do
-      Floss::Main.new(BASE, :archive).run
-    end
+  parser.on('-v', '--version', 'Floss current version') do
+    print Floss::VERSION
   end
 
-  desc 'Grab floss projects'
-  command :grab do |c|
-    c.action do
-      Floss::Main.new(BASE, :grab).run
-    end
+  parser.on('-g', '--grab', 'Grab floss projects') do
+    Floss::Main.new(:grab).run
   end
-end
 
-Cli.run(ARGV)
+  parser.on('-a', '--archive', 'Archive Floss projects') do
+    Floss::Main.new(:archive).run
+  end
+end.parse!

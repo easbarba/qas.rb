@@ -5,22 +5,21 @@ require 'git'
 module Floss
   # Grab FLOSS Projects
   class Grab
-    attr_reader :utils, :project
+    attr_reader :project
 
-    def initialize(utils, project)
-      @utils = utils
+    def initialize(project)
       @project = project
     end
 
     def do_pull
-      utils.spin('Pulling') do
+      Utils.spin('Pulling') do
         repo = Git.open project.folder
         repo.pull 'origin', repo.current_branch
       end
     end
 
     def do_clone
-      utils.spin('Cloning') do
+      Utils.spin('Cloning') do
         Git.clone project.url, project.folder
       end
     end

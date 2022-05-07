@@ -2,12 +2,12 @@
 
 module Floss
   # General Utilities.
-  class Utils
-    # ...
-    def spin(msg)
-      warning = 'status:'
-
+  module Utils
+    # Spin for me, dear.
+    def self.spin(msg)
       require 'tty-spinner'
+
+      warning = 'status:'
       spinner = TTY::Spinner.new("#{warning} #{msg.downcase} :spinner ", format: :dots_6)
       spinner.auto_spin
 
@@ -15,8 +15,8 @@ module Floss
       spinner.success
     end
 
-    # return all executable found
-    def commandv?(executable)
+    # prints external executable location
+    def self.which?(executable)
       require 'pathname'
 
       [].tap do |x|

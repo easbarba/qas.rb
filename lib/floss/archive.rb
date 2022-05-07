@@ -14,10 +14,9 @@ module Floss
     # Folder which compressed files will be stored
     ARCHIVED_FOLDER = Pathname.new(File.join(Dir.home, 'Downloads', 'archived'))
 
-    attr_reader :utils, :archived_filename, :project
+    attr_reader :archived_filename, :project
 
-    def initialize(utils, project)
-      @utils = utils
+    def initialize(project)
       @project = project
       @archived_filename = "#{ARCHIVED_FOLDER.join(project.name)}.#{FMT}"
     end
@@ -26,7 +25,7 @@ module Floss
     def do_archive
       require 'git'
 
-      utils.spin('Archiving') do
+      Utils.spin('Archiving') do
         repo = Git.open project.folder
         repo.archive repo.current_branch, archived_filename, format: FMT # TODO: fiber/multithread
       end
