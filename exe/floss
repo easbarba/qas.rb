@@ -1,13 +1,10 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require_relative '../lib/floss'
 
-require 'gli'
-
 # and then, there was fire.
-class App
-  extend GLI::App
-
+class Cli
   BASE = Floss::Utils.new
 
   program_desc 'Manage FLOSS Projects repositories.'
@@ -29,4 +26,4 @@ class App
   end
 end
 
-App.run(ARGV)
+Cli.run(ARGV)

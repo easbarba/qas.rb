@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'uri'
 require 'csv'
 require 'pathname'
@@ -17,7 +19,7 @@ module Floss
           name = project['name']
           url = URI project['repository']
 
-          x << ProjectInfo.new(name, url, lang.to_s)
+          x << Info.new(name, url, lang.to_s)
         end
       end
     end

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'pathname'
 
 module Floss
   # Provides Project Information
-  class ProjectInfo
+  class Info
     attr_reader :url, :name, :folder
 
     def initialize(name, url, language)

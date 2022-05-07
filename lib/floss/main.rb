@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Floss
   # Core Management FLOSS Projects
   class Main
@@ -25,8 +27,10 @@ module Floss
     end
 
     def actions
-      { grab: ->(project) { Grab.new(utils, project) }.curry,
-        archive: ->(project) { Archive.new(utils, project) }.curry }
+      {
+        grab: ->(project) { Grab.new(utils, project) }.curry,
+        archive: ->(project) { Archive.new(utils, project) }.curry
+      }
     end
 
     def run
