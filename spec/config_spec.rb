@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require_relative '../lib/floss'
+
+require 'floss'
 
 module Floss
   RSpec.describe Config do
