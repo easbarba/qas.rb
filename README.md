@@ -16,8 +16,8 @@ Archive selected projects at `$HOME/Downloads/archived`:
 
 `floss` looks for configuration files at `$XDG_CONFIG/floss`:
 
--> $XDG_CONFIG/floss/misc.csv
- 
+
+$XDG_CONFIG/floss/misc.csv
 ```csv
 name,branch,url
 awesomewm,master,https://github.com/awesomeWM/awesome
@@ -29,19 +29,17 @@ swift_format,main,https://github.com/apple/swift-format
 
 Get all dependencies and install with:
 
-    $ make install
+    $ bin/setup && bin/install
 
 ## Container
 
 ## TODO
 
-- check if error 'unable to access' repository and go on to the next one. 
 - more management utilities
-- provide binary
 
 ## History
-The `floss` project initially was a module of a bigger package called `cejo` and
-later on extracted as standalone to follow the UNIX main rule: 'do one thing, well'.
+The `floss` project initially was a module of a bigger package called `cejo`
+later on extracted as standalone to follow UNIX main rule: 'do one thing, well'.
 
 
 ## License
