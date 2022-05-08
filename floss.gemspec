@@ -21,7 +21,8 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'tty-spinner', '~> 0.9.3'
 
   # development
-
+  spec.add_development_dependency 'rake', '~> 13.0', '>= 13.0.6'
+  spec.add_development_dependency 'reek', '~> 6.1', '>= 6.1.1'
   spec.add_development_dependency 'rspec', '~> 3.11'
   spec.add_development_dependency 'rubocop', '~> 1.29'
   spec.add_development_dependency 'rufo', '~> 0.13.0'
