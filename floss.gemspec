@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name = 'floss'
-  spec.version = '1.3.2'
+  spec.version = '1.3.3'
   spec.authors = ['easbarba']
   spec.email = ['easbarba@outlook.com']
 

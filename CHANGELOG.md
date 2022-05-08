@@ -1,3 +1,7 @@
+## [1.3.3] - 2022-05-07
+
+- remove --verbose option
+
 ## [1.3.2] - 2022-05-07
 
 - bin folder: add more tasks
