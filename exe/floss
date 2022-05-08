@@ -17,7 +17,7 @@ module Cli
       end
 
       parser.on('-i', '--info', 'Floss current version') do
-        @action = :version
+        @action = :info
       end
 
       parser.on('-g', '--grab', 'Grab floss projects') do

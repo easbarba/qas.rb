@@ -1,3 +1,7 @@
+## [1.3.0] - 2022-05-07
+
+- add branch requirement to configuration file
+
 ## [1.2.0] - 2022-05-07
 
 - implements --archive

@@ -15,9 +15,10 @@ module Floss
       [].tap do |x|
         CSV.read(file, headers: true).by_row.each do |project|
           name = project['name']
-          url = URI project['repository']
+          branch = project['branch']
+          url = URI project['url']
 
-          x << Info.new(name, url, lang.to_s)
+          x << Info.new(name, branch, url, lang.to_s)
         end
       end
     end

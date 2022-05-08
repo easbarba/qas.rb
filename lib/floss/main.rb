@@ -39,8 +39,17 @@ module Floss
       }
     end
 
+    def info
+      if command == :info
+        puts <<~INFO
+          #{VERSION}
+        INFO
+
+      end
+    end
+
     def run
-      print VERSION and return if command == :version
+      # info and return
 
       return unless actions.keys.include? command
 
