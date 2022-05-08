@@ -1,6 +1,6 @@
-## [1.3.3] - 2022-05-07
+## [1.4.0] - 2022-05-08
 
-- remove --verbose option
+- archive/grab: even simple CLI printing
 
 ## [1.3.2] - 2022-05-07
 
