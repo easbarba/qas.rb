@@ -12,23 +12,21 @@ module Floss
     end
 
     def pull
-      Utils.spin('Pulling') do
+      Utils.spin(project.name) do
         repo = Git.open project.folder
         repo.pull 'origin', repo.current_branch
       end
     end
 
     def clone
-      Utils.spin('Cloning') do
+      Utils.spin(project.name) do
         Git.clone project.url, project.folder
       end
     end
 
     # Cloning/Pulling FLOSS Project
     def run
-      print project.to_s
       project.folder.join('.git').exist? ? pull : clone
-      puts
     end
   end
 end

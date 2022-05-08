@@ -30,7 +30,7 @@ module Floss
     def archive
       require 'git'
 
-      Utils.spin('Archiving') do
+      Utils.spin(project.name) do
         repo = Git.open project.folder
         repo.archive repo.current_branch, @fullpath, format: @format # TODO: fiber/multithread
       end

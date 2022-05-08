@@ -4,11 +4,10 @@ module Floss
   # General Utilities.
   module Utils
     # Spin for me, dear.
-    def self.spin(msg)
+    def self.spin(project)
       require 'tty-spinner'
 
-      warning = 'status:'
-      spinner = TTY::Spinner.new("#{warning} #{msg.downcase} :spinner ", format: :dots_6)
+      spinner = TTY::Spinner.new("#{project} :spinner ", format: :dots_6)
       spinner.auto_spin
 
       yield
