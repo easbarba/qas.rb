@@ -23,11 +23,6 @@ module Floss
       end
     end
 
-    def info
-      puts 'Files found:'
-      puts found.each { |file| file }
-    end
-
     def found
       files = Pathname.new(File.join(Dir.home, '.config', 'floss'))
 

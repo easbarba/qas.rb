@@ -4,7 +4,7 @@
 require_relative '../lib/floss'
 
 module Cli
-  attr_accessor :action, :verbose, :args
+  attr_accessor :action, :args
 
   def self.options
     require 'optparse'
@@ -12,7 +12,7 @@ module Cli
     OptionParser.new do |parser|
       parser.banner = 'Easily manage floss repositories.'
 
-      parser.on('-i', '--info', 'project information') do
+      parser.on('-v', '--version', 'project information') do
         print Floss::VERSION
         exit!
       end
@@ -24,10 +24,6 @@ module Cli
       parser.on('-a', '--archive NAMES', Array, 'archive floss projects listed on NAMES') do |names|
         @names = names
         @action = :archive
-      end
-
-      parser.on('-v', '--verbose', 'more information') do
-        @verbose = true
       end
     end
   end
@@ -48,7 +44,7 @@ module Cli
       options.parse! ['--help']
     end
 
-    Floss::Main.new(@action, @names, @verbose).run
+    Floss::Main.new(@action, @names).run
   end
 end
 

@@ -5,24 +5,21 @@ module Floss
   class Main
     class GitMustBeAvailable < StandardError; end
 
-    attr_reader :folders, :utils, :command, :projects, :verbose
+    attr_reader :folders, :utils, :command, :projects
 
-    def initialize(command, names = nil, verbose = nil)
+    def initialize(command, names = nil)
       @command = command
       @names = names
-      @verbose = verbose
     end
 
     def projects
       c = Config.new
-      c.info if @verbose
-
       c.items
     end
 
     def current_project
       projects.each do |item, repos|
-        puts <<~INFO if @verbose
+        puts <<~INFO
           ❯ #{item.capitalize}
 
         INFO
