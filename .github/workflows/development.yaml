@@ -6,16 +6,23 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+
 jobs:
   test:
 
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['2.7', '3.0', '3.1']
+        ruby-version: ['3.0', '3.1', '2.6', '2.7']
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+
+    - name: Copy configuration files
+      run: |
+        mkdir -p ~/.config && cp -r examples ~/.config/floss
 
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
@@ -23,9 +30,6 @@ jobs:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
-    - name: prepare config
-      run: |
-        mkdir -p ~/.config && cp -r examples ~/.config/floss
 
     - name: Run tests
-      run: bundle exec rspec
+      run: bundle exec rake
