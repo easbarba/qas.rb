@@ -1,3 +1,8 @@
+## [1.3.2] - 2022-05-07
+
+- bin folder: add more tasks
+- readme: inform user to use scripts at bin folder
+
 ## [1.3.1] - 2022-05-07
 
 - README: inform user how to correctly use multiple arguments
