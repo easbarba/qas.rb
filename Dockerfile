@@ -4,11 +4,13 @@ ENV BUNDLER_VERSION=2.3.12
 
 WORKDIR /app
 
-COPY Gemfile* floss.gemspec .
+COPY Gemfile* floss.gemspec ./
 
-RUN bundle check || bundle install
+RUN apk add git
+RUN bundle install
+RUN mkdir -pv /root/.config
 
-COPY examples/ ~/.config/floss
+COPY examples /root/.config/floss
 COPY . .
 
 CMD ["exe/floss"]
