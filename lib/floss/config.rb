@@ -26,26 +26,22 @@ module Floss
     def found
       files = Pathname.new(File.join(Dir.home, '.config', 'floss'))
 
-      x = []
-
-      # Check if config does not exist if a symlink
-      files.children.each do |y|
-        x << y if y.exist?
+      [].tap do |x|
+        # Check if config does not exist if a symlink
+        files.children.each do |y|
+          x << y if y.exist?
+        end
       end
-
-      x
     end
 
     # returns all parsed items
     def items
-      pj = {}
-
-      found.each do |file|
-        lang = file.basename.sub_ext('').to_s.to_sym
-        pj[lang] = parse file, lang
+      {}.tap do |x|
+        found.each do |file|
+          lang = file.basename.sub_ext('').to_s.to_sym
+          x[lang] = parse file, lang
+        end
       end
-
-      pj
     end
   end
 end

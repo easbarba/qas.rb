@@ -15,21 +15,19 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['3.0', '3.1', '2.6', '2.7']
+        ruby-version: ['2.6', '2.7', '3.0', '3.1']
 
     steps:
     - uses: actions/checkout@v3
-
-    - name: Copy configuration files
-      run: |
-        mkdir -p ~/.config && cp -r examples ~/.config/floss
-
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
+    - name: Copy configuration files
+      run: |
+        mkdir -p ~/.config && cp -r examples ~/.config/floss
 
     - name: Run tests
       run: bundle exec rake
