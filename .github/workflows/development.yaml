@@ -1,4 +1,4 @@
-name: Floss
+name: Ruby
 
 on:
   push:

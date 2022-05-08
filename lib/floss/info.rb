@@ -14,7 +14,7 @@ module Floss
     attr_reader :branch
 
     # project uri
-    attr_reader :uri
+    attr_reader :url
 
     # project folder
     attr_reader :folder

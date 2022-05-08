@@ -18,12 +18,7 @@ module Floss
     end
 
     def current_project
-      projects.each do |item, repos|
-        puts <<~INFO
-          ❯ #{item.capitalize}
-
-        INFO
-
+      projects.each do |_, repos|
         repos.each do |project|
           yield project if block_given?
         end

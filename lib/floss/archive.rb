@@ -2,6 +2,8 @@
 
 require 'pathname'
 
+# TODO: if project is not present, clone it!
+
 module Floss
   # Archive FLOSS Projects
   class Archive
@@ -9,18 +11,19 @@ module Floss
     attr_reader :format
 
     # FLOSS Projects elected to be archived
-    attr_reader :projects
+    attr_reader :names
 
+    # project
     attr_reader :project
 
     # Folder to store compressed projects
-    FOLDER = Pathname.new(File.join(Dir.home, 'Downloads', 'archived'))
+    ARCHIVED = Pathname.new(File.join(Dir.home, 'Downloads', 'archived'))
 
-    def initialize(project, projects, fmt = 'tar')
+    def initialize(project, names, fmt = 'tar')
       @project = project
-      @projects = projects
+      @names = names
       @format = fmt
-      @fullpath = "#{FOLDER.join(project.name)}.#{@format}"
+      @fullpath = "#{ARCHIVED.join(project.name)}.#{@format}"
     end
 
     # Archiving FLOSS project
@@ -35,19 +38,21 @@ module Floss
       puts # a bit more of space
     end
 
+    # create archived folder
     def mkfolder
-      Dir.mkdir FOLDER unless FOLDER.exist?
+      require 'fileutils'
+      FileUtils.mkdir_p ARCHIVED unless ARCHIVED.exist?
     end
 
     def info
-      puts "#{project.name} > #{@fullpath}"
+      print "#{project.name} > #{@fullpath}"
     end
 
     def run
-      return unless projects.include? project.name
+      return unless names.include? project.name
 
-      info
       mkfolder
+      info
       archive
     end
   end

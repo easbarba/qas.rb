@@ -26,10 +26,8 @@ module Floss
 
     # Cloning/Pulling FLOSS Project
     def run
-      puts project.to_s
-
-      project.folder.exist? ? pull : clone
-
+      print project.to_s
+      project.folder.join('.git').exist? ? pull : clone
       puts
     end
   end
