@@ -10,7 +10,7 @@ Grab all projects locally:
 
 Archive selected projects at `$HOME/Downloads/archived`: 
 
-    $ floss --archive --name awesomewm nuxt
+    $ floss --archive --name awesomewm,nuxt
 
 ## Configuration
 

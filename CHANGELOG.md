@@ -1,3 +1,8 @@
+## [1.3.1] - 2022-05-07
+
+- README: inform user how to correctly use multiple arguments
+
+
 ## [1.3.0] - 2022-05-07
 
 - add branch requirement to configuration file

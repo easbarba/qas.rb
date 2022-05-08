@@ -12,21 +12,22 @@ module Cli
     OptionParser.new do |parser|
       parser.banner = 'Easily manage floss repositories.'
 
-      parser.on('-v', '--verbose', 'More information') do
-        @verbose = true
+      parser.on('-i', '--info', 'project information') do
+        print Floss::VERSION
+        exit!
       end
 
-      parser.on('-i', '--info', 'Floss current version') do
-        @action = :info
-      end
-
-      parser.on('-g', '--grab', 'Grab floss projects') do
+      parser.on('-g', '--grab', 'grab floss projects') do
         @action = :grab
       end
 
-      parser.on('-a', '--archive NAMES', 'Archive floss projects on list of NAMES') do |names|
+      parser.on('-a', '--archive NAMES', Array, 'archive floss projects listed on NAMES') do |names|
         @names = names
         @action = :archive
+      end
+
+      parser.on('-v', '--verbose', 'more information') do
+        @verbose = true
       end
     end
   end
@@ -42,6 +43,9 @@ module Cli
 
         Missing NAMES of projects!'
       ERROR
+      exit!
+    rescue OptionParser::InvalidOption
+      options.parse! ['--help']
     end
 
     Floss::Main.new(@action, @names, @verbose).run

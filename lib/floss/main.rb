@@ -22,9 +22,10 @@ module Floss
 
     def current_project
       projects.each do |item, repos|
-        puts
-        print "❯ #{item.capitalize}"
-        puts
+        puts <<~INFO if @verbose
+          ❯ #{item.capitalize}
+
+        INFO
 
         repos.each do |project|
           yield project if block_given?
@@ -39,20 +40,7 @@ module Floss
       }
     end
 
-    def info
-      if command == :info
-        puts <<~INFO
-          #{VERSION}
-        INFO
-
-      end
-    end
-
     def run
-      # info and return
-
-      return unless actions.keys.include? command
-
       raise GitMustBeAvailable, 'Git was not found!' unless Utils.which?('git').any?
 
       current_project do |project|
