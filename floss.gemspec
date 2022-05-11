@@ -5,12 +5,11 @@ Gem::Specification.new do |spec|
   spec.version = '1.4.0'
   spec.authors = ['easbarba']
   spec.email = ['easbarba@outlook.com']
-
   spec.summary = 'easily manage floss repositories.'
   spec.homepage = 'https://github.com/easbarba/floss'
+  spec.license = 'gpl-v3'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.7')
   spec.metadata['homepage_uri'] = spec.homepage
-
   spec.files = Dir.glob('{lib,exe}/**/*', File::FNM_DOTMATCH).reject { |f| File.directory?(f) }
   spec.bindir = 'exe'
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }

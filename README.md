@@ -43,4 +43,4 @@ later on extracted as standalone to follow UNIX main rule: 'do one thing, well'.
 
 
 ## License
-Apache version 2.0
+[GNU General Public License, Version 3](https://www.gnu.org/licenses/gpl-3.0.en.html)
