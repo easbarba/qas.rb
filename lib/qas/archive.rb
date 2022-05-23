@@ -4,7 +4,7 @@ require 'pathname'
 
 # TODO: if project is not present, clone it!
 
-module Floss
+module Qas
   # Archive FLOSS Projects
   class Archive
     # Format to be compressed

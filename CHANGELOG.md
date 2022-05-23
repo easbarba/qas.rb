@@ -1,3 +1,7 @@
+## [1.5.0] - 22-05-2022
+
+- rename project to qas
+
 ## [1.4.0] - 2022-05-08
 
 - archive/grab: even simple CLI printing

@@ -1,16 +1,7 @@
 FROM ruby:3.1.2-alpine3.15
-
-ENV BUNDLER_VERSION=2.3.12
-
+RUN apk --update add git
 WORKDIR /app
-
-COPY Gemfile* floss.gemspec ./
-
-RUN apk add git
+COPY . ./
 RUN bundle install
 RUN mkdir -pv /root/.config
-
-COPY examples /root/.config/floss
-COPY . .
-
-CMD ["exe/floss"]
+COPY examples /root/.config/qas

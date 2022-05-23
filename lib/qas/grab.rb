@@ -2,7 +2,7 @@
 
 require 'git'
 
-module Floss
+module Qas
   # Grab FLOSS Projects
   class Grab
     attr_reader :project

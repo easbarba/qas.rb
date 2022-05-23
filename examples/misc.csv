@@ -1,5 +1,4 @@
 name,branch,url
-awesomewm,master,https://github.com/awesomeWM/awesome
-starship,master,https://github.com/starship/starship
-nuxt,main,https://github.com/nuxt/framework
-swift_format,main,https://github.com/apple/swift-format
+hare,master,https://git.sr.ht/~sircmpwn/hare
+dwm,master,https://git.suckless.org/dwm
+crossplane,master,https://github.com/crossplane/crossplane

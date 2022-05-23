@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Floss
+module Qas
   # Main start point
   class Main
     class GitMustBeAvailable < StandardError; end

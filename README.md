@@ -1,4 +1,4 @@
-# Floss
+# Qas
 
 Easily manage FLOSS repositories.
 
@@ -6,18 +6,18 @@ Easily manage FLOSS repositories.
 
 Grab all projects locally: 
 
-    `$ floss --grab`
+    `$ qas --grab`
 
 Archive selected projects at `$HOME/Downloads/archived`: 
 
-    $ floss --archive --name awesomewm,nuxt
+    $ qas --archive --name awesomewm,nuxt
 
 ## Configuration
 
-`floss` looks for configuration files at `$XDG_CONFIG/floss`:
+`qas` looks for configuration files at `$XDG_CONFIG/qas`:
 
 
-$XDG_CONFIG/floss/misc.csv
+$XDG_CONFIG/qas/misc.csv
 ```csv
 name,branch,url
 awesomewm,master,https://github.com/awesomeWM/awesome
@@ -38,7 +38,7 @@ Get all dependencies and install with:
 - more management utilities
 
 ## History
-The `floss` project initially was a module of a bigger package called `cejo`
+The `qas` project initially was a module of a bigger package called `cejo`
 later on extracted as standalone to follow UNIX main rule: 'do one thing, well'.
 
 

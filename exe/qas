@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require_relative '../lib/floss'
+require_relative '../lib/info'
+require_relative '../lib/qas'
 
 module Cli
   attr_accessor :action, :args
@@ -10,10 +11,10 @@ module Cli
     require 'optparse'
 
     OptionParser.new do |parser|
-      parser.banner = 'Easily manage floss repositories.'
+      parser.banner = Qas::DESCRIPTION
 
       parser.on('-v', '--version', 'project information') do
-        print Floss::VERSION
+        print Qas::VERSION
         exit!
       end
 
@@ -44,7 +45,7 @@ module Cli
       options.parse! ['--help']
     end
 
-    Floss::Main.new(@action, @names).run
+    Qas::Main.new(@action, @names).run
   end
 end
 

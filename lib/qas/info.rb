@@ -2,7 +2,7 @@
 
 require 'pathname'
 
-module Floss
+module Qas
   # Project Information
   class Info
     ROOT = Pathname.new(File.join(Dir.home, 'Projects'))

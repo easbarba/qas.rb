@@ -2,9 +2,9 @@
 
 require 'spec_helper'
 
-require 'floss'
+require 'qas'
 
-module Floss
+module Qas
   RSpec.describe Config do
     subject(:config) { Config.new }
 

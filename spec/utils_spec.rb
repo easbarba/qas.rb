@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'floss'
+require 'qas'
 
-module Floss
+module Qas
   RSpec.describe Utils do
   end
 end

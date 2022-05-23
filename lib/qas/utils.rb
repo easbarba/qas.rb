@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Floss
+module Qas
   # General Utilities.
   module Utils
     # Spin for me, dear.

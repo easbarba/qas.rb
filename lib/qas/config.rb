@@ -8,7 +8,7 @@ require 'uri'
 # TODO: Check if file match expect structure
 # TODO: check if file is empty
 
-module Floss
+module Qas
   # List all config available
   class Config
     def parse(file, lang)
@@ -24,7 +24,7 @@ module Floss
     end
 
     def found
-      files = Pathname.new(File.join(Dir.home, '.config', 'floss'))
+      files = Pathname.new(File.join(Dir.home, '.config', 'qas'))
 
       [].tap do |x|
         # Check if config does not exist if a symlink

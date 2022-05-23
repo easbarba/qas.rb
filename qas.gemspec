@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
+require_relative 'lib/info'
+
 Gem::Specification.new do |spec|
-  spec.name = 'floss'
-  spec.version = '1.4.0'
+  spec.name = 'qas'
+  spec.version = Qas::VERSION
   spec.authors = ['easbarba']
   spec.email = ['easbarba@outlook.com']
-  spec.summary = 'easily manage floss repositories.'
-  spec.homepage = 'https://github.com/easbarba/floss'
+  spec.summary = Qas::DESCRIPTION
+  spec.homepage = Qas::URL
   spec.license = 'gpl-v3'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.7')
   spec.metadata['homepage_uri'] = spec.homepage
