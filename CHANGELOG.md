@@ -1,3 +1,7 @@
+## [1.5.1] - 27-05-2022
+
+- fix tests
+
 ## [1.5.0] - 22-05-2022
 
 - rename project to qas
