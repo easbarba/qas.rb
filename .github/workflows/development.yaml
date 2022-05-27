@@ -25,7 +25,7 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: false # runs 'bundle install' and caches installed gems automatically
-      run: bundle install
+    - run: bundle install
 
     - name: Copy configuration files
       run: |
