@@ -2,6 +2,9 @@
 
 Easily manage FLOSS repositories.
 
+Available on: [rubygems](https://rubygems.org/gems/qas) |
+[hub.docker](https://hub.docker.com/r/easbarbosa/qas)
+
 ## Usage
 
 Grab all projects locally: 
