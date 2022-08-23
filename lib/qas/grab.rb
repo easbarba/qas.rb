@@ -3,7 +3,7 @@
 require 'git'
 
 module Qas
-  # Grab FLOSS Projects
+  # Clone or Pull FLOSS Projects
   class Grab
     attr_reader :project
 

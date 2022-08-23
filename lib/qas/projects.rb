@@ -10,7 +10,7 @@ require 'uri'
 
 module Qas
   # List all config available
-  class Config
+  class Projects
     def parse(file, lang)
       [].tap do |x|
         CSV.read(file, headers: true).by_row.each do |project|

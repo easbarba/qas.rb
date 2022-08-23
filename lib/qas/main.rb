@@ -5,7 +5,7 @@ module Qas
   class Main
     class GitMustBeAvailable < StandardError; end
 
-    attr_reader :folders, :utils, :command, :projects
+    attr_reader :folders, :utils, :command
 
     def initialize(command, names = nil)
       @command = command
@@ -13,8 +13,7 @@ module Qas
     end
 
     def projects
-      c = Config.new
-      c.items
+      Projects.new.items
     end
 
     def current_project
