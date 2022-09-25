@@ -18,9 +18,10 @@ module Qas
       end
     end
 
+    # TODO: handle error Git::GitExecuteError
     def clone
       Utils.spin(project.name) do
-        Git.clone project.url, project.folder
+        Git.clone project.url, project.folder, depth: 1, branch: project.branch
       end
     end
 
