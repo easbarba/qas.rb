@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   # runtime
-  spec.add_runtime_dependency 'git', '~> 1.11'
+  spec.add_runtime_dependency 'git', '~> 1.12'
   spec.add_runtime_dependency 'tty-spinner', '~> 0.9.3'
 
   # development

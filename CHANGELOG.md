@@ -1,3 +1,7 @@
+## [1.5.2] - 2022-09-25
+
+- grab: limit depth to one
+
 ## [1.5.1] - 27-05-2022
 
 - fix tests
