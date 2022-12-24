@@ -1,6 +1,6 @@
 # Qas
 
-Easily manage FLOSS repositories.
+Easily manage multiple FLOSS repositories.
 
 Available on: [rubygems](https://rubygems.org/gems/qas) |
 [hub.docker](https://hub.docker.com/r/easbarbosa/qas)

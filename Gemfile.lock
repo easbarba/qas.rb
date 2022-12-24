@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    qas (1.5.1)
+    qas (1.5.3)
       git (~> 1.12)
       tty-spinner (~> 0.9.3)
 
